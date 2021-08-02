@@ -21,11 +21,12 @@ signOutButton.addEventListener('click', async () => {
 });
 
 async function setFirebaseCustomToken() {
-  const response = await fetch('http://localhost:3001/firebase', {
+  const response = await fetch('https://us-central1-firestore-chat-app-4918d.cloudfunctions.net/getFirebaseToken', {
     headers: {
       'Authorization': `Bearer ${auth0Client.getIdToken()}`,
     },
   });
+
 
   const data = await response.json();
   await firebaseClient.setToken(data.firebaseToken);
